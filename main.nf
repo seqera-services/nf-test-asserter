@@ -39,8 +39,6 @@ process ASSERT_SNAPSHOT {
 
     publishDir params.outdir, mode: 'copy'
 
-    secret 'TOWER_ACCESS_TOKEN'
-
     input:
     path patched_jar
     val pipeline_repo
