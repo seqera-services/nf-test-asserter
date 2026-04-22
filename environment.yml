@@ -11,3 +11,4 @@ dependencies:
   - coreutils
   - findutils
   - ca-certificates
+  - python=3.11
