@@ -132,8 +132,14 @@ PY
 
     cd ..
 
-    # Surface the regenerated .snap(s).
-    find pipeline -name "*.nf.test.snap" -newer asserter.log -exec cp {} . \\;
+    # Surface the .snap next to the test file (whether nf-test rewrote it or
+    # the committed one matched). For regeneration scenarios, the caller can
+    # optionally clean-snapshot via --clean-snapshot (set in options) before
+    # invocation.
+    SNAP_PATH="pipeline/${test_file}.snap"
+    if [ -f "\$SNAP_PATH" ]; then
+        cp "\$SNAP_PATH" "\$(basename '${test_file}').snap"
+    fi
     """
 }
 
